@@ -1,6 +1,10 @@
 package kr.jay.rental.domain.model.vo
 
+import jakarta.persistence.Embeddable
+
+@Embeddable
 data class IDName (
-    private val id: String,
-    private val name: String,
+
+    val id: String,
+    val name: String,
 )

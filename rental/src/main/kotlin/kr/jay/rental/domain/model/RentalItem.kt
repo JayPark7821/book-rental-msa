@@ -1,15 +1,20 @@
 package kr.jay.rental.domain.model
 
+import jakarta.persistence.Embeddable
+import jakarta.persistence.Embedded
 import kr.jay.rental.domain.model.vo.Item
 import java.time.LocalDate
 
+@Embeddable
 class RentalItem private constructor(
-    private var item: Item,
-    private var rentDate: LocalDate,
-    private var overdued: Boolean,
-    private var overdueDate: LocalDate,
-)  {
-    companion object{
+    @Embedded
+    var item: Item,
+    var rentDate: LocalDate,
+    var overdued: Boolean,
+    var overdueDate: LocalDate,
+) {
+
+    companion object {
         fun createRentalItem(item: Item) =
             RentalItem(
                 item,
@@ -18,4 +23,6 @@ class RentalItem private constructor(
                 LocalDate.now().plusDays(14)
             )
     }
+
+
 }

@@ -1,11 +1,15 @@
 package kr.jay.rental.domain.model.vo
 
+import jakarta.persistence.Embeddable
+import jakarta.persistence.Embedded
 import kr.jay.rental.domain.model.RentalItem
 import java.time.LocalDate
 
+@Embeddable
 data class ReturnItem private constructor(
-    private val rentalItem: RentalItem,
-    private val returnDate: LocalDate
+    @Embedded
+     val rentalItem: RentalItem,
+     val returnDate: LocalDate
 ) {
 
     companion object{

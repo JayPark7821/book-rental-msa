@@ -1,7 +1,10 @@
 package kr.jay.rental.domain.model.vo
 
+import jakarta.persistence.Embeddable
+
+@Embeddable
 data class LateFee private constructor(
-    private val point: Long
+    val point: Long
 ) {
     companion object{
         fun createLateFee() : LateFee{

@@ -1,10 +1,13 @@
 package kr.jay.rental.domain.model.vo
 
+import jakarta.persistence.Embeddable
+import java.io.Serializable
 import java.time.LocalDate
 import java.util.*
 
+@Embeddable
 data class  RentalCardNo private constructor(
-    private val no: String,
+    val no: String,
 ){
     companion object{
         fun createRentalCardNo() : RentalCardNo{
