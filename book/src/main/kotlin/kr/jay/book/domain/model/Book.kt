@@ -1,5 +1,6 @@
 package kr.jay.book.domain.model
 
+import jakarta.persistence.*
 import kr.jay.book.domain.model.vo.*
 import java.time.LocalDate
 
@@ -10,6 +11,8 @@ import java.time.LocalDate
  * @version 1.0.0
  * @since 11/5/23
  */
+
+@Entity
 class Book(
     no: Long,
     title: String,
@@ -20,16 +23,24 @@ class Book(
 ) {
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     var no = no
         private set
     var title = title
         private set
+
+    @Embedded
     var desc = desc
         private set
+
+    @Enumerated(EnumType.STRING)
     var classification = classification
         private set
+    @Enumerated(EnumType.STRING)
     var bookStatus = bookStatus
         private set
+    @Enumerated(EnumType.STRING)
     var location = location
         private set
 

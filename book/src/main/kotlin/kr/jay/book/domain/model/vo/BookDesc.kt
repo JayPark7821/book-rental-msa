@@ -1,5 +1,6 @@
 package kr.jay.book.domain.model.vo
 
+import jakarta.persistence.Embeddable
 import java.time.LocalDate
 
 /**
@@ -9,6 +10,8 @@ import java.time.LocalDate
  * @version 1.0.0
  * @since 11/5/23
  */
+
+@Embeddable
 data class BookDesc private constructor(
     val description: String,
     val author: String,
