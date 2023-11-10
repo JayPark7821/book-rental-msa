@@ -5,7 +5,7 @@ import kr.jay.rental.application.usecase.CreateRentalCardUseCase
 import kr.jay.rental.application.usecase.dto.RentalCardOutputDto
 import kr.jay.rental.application.usecase.dto.UserInputDto
 import kr.jay.rental.domain.model.RentalCard
-import kr.jay.rental.domain.model.vo.IDName
+import kr.jay.rental.domain.model.vo.IdName
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -24,7 +24,7 @@ class CreateRentalCardInputPort(
 ) :CreateRentalCardUseCase{
 
     override fun createRentalCard(userInputDto: UserInputDto): RentalCardOutputDto =
-        RentalCard.createRentalCard(IDName(userInputDto.userId, userInputDto.userName)).let {
+        RentalCard.createRentalCard(IdName(userInputDto.userId, userInputDto.userName)).let {
             rentalCardOutputPort.save(it)
             return RentalCardOutputDto.mapToDto(it)
         }
