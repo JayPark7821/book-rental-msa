@@ -1,6 +1,8 @@
 package kr.jay.member.domain.model.vo
 
 import jakarta.persistence.Embeddable
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 
 /**
  * Authority
@@ -11,5 +13,6 @@ import jakarta.persistence.Embeddable
  */
 @Embeddable
 data class Authority(
+    @Enumerated(EnumType.STRING)
     private val authority: UserRole,
 )
