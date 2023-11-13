@@ -48,4 +48,10 @@ consumers:
     name: rental_return
   topic3:
     name: overdue_clear
+  topic4:
+    name: point_use
   group-id: member
+
+producers:
+  topic1:
+    name: rental_rent

@@ -46,3 +46,7 @@ consumers:
   topic2:
     name: rental_return
   group-id: book
+
+producer:
+  topic1:
+    name: rental_result

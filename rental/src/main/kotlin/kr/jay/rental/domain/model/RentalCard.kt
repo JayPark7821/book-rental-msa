@@ -65,6 +65,27 @@ class RentalCard private constructor(
 
     }
 
+    fun cancelRentItem(item: Item): RentalCard {
+        this.rentalItemList.find { it.item == item }?.let {
+            this.removeRentalItem(it)
+        }
+        return this
+    }
+
+    fun cancelReturnItem(item: Item, point:Long): RentalCard {
+        this.returnItemList.find { it.rentalItem.item == item }?.let {
+            this.addRentalItem(it.rentalItem)
+            this.removeReturnItem(it)
+        }
+        return this
+    }
+
+    fun cancelMakeAvailableRental(point: Long): Long{
+        this.lateFee = lateFee.addPoint(point)
+        this.rentStatus = RentStatus.RENT_UNAVAILABLE
+        return this.lateFee.point
+    }
+
     // 대여처리
     fun rentItem(item: Item): RentalCard {
         checkRentalAvailable()
@@ -124,6 +145,10 @@ class RentalCard private constructor(
 
     private fun removeRentalItem(rentalItem: RentalItem) {
         this.rentalItemList.minus(rentalItem)
+    }
+
+    private fun removeReturnItem(returnItem: ReturnItem) {
+        this.returnItemList.minus(returnItem)
     }
 
     private fun addReturnItem(returnItem: ReturnItem) {
